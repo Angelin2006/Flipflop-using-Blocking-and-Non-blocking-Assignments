@@ -30,22 +30,30 @@ Close the Simulation Once done, by going to Simulation → "Close Simulation
 
 Input/Output Signal Diagram:
 
-D FLIP FLOP
+D FLIP FLOP :
+
+
 <img width="616" height="300" alt="Screenshot 2025-09-16 205440" src="https://github.com/user-attachments/assets/cc690886-4052-4c10-9a52-3ab80a1e7877" />
 
-SR FLIP FLOP
+SR FLIP FLOP :
+
+
 <img width="600" height="355" alt="Screenshot 2025-09-16 205452" src="https://github.com/user-attachments/assets/518dcb64-31e3-4dbf-bf72-91e0a37e4339" />
 
-JK FLIP FLOP
+JK FLIP FLOP :
+
+
 <img width="562" height="348" alt="Screenshot 2025-09-16 205502" src="https://github.com/user-attachments/assets/48f46606-aa99-40ee-b2d5-a976f67a751c" />
 
-T FLIP FLOP
+T FLIP FLOP :
+
+
 <img width="596" height="331" alt="Screenshot 2025-09-16 205523" src="https://github.com/user-attachments/assets/54858162-adb1-40a1-8d9b-14ffcca8dfc1" />
 
 
 RTL code :
 
-D FF
+D FLIP FLOP :
          
     module dff ( clk, rst,d, q);
     input clk,rst,d;
@@ -58,7 +66,7 @@ D FF
     end
     endmodule
     
-SR FF
+SR FLIP FLOP :
 
     module sr_ff (input clk,input S,input R,output reg Q);
     always @(posedge clk)
@@ -72,7 +80,7 @@ SR FF
     end
     endmodule
 
-JK FF
+JK FLIP FLOP :
 
     module jk_ff(input clk,J,K, output reg Q);
     always @(posedge clk) begin
@@ -85,7 +93,7 @@ JK FF
     end
     endmodule
 
-T FF
+T FLIP FLOP :
 
     module t_ff(clk,rst,Tout,T);
     input clk,rst,T;
@@ -103,7 +111,7 @@ T FF
 
 TestBench:
 
-D Flip flop
+D FLIP FLOP :
 
     module dff_tb;
     reg clk_t, rst_t, d_t;
@@ -121,7 +129,7 @@ D Flip flop
     always #10 clk_t = ~clk_t;
     endmodule
 
-T flip flop
+T FLIP FLOP :
 
     module t_ff_tb;
     reg clk, rst, T;
@@ -143,7 +151,7 @@ T flip flop
     endmodule
 
 
-SR Flip Flop
+SR FLIP FLOP :
 
     module sr_ff_tb;
     reg clk, S, R;
@@ -163,7 +171,7 @@ SR Flip Flop
     end
     endmodule
 
-JK Flip flop
+JK FLIP FLOP :
 
     module tb_jk_ff;
     reg clk;
@@ -188,21 +196,29 @@ JK Flip flop
 
 Output waveform:
 
-T FLIP FLOP
+T FLIP FLOP :
+
 
 <img width="1919" height="1199" alt="Screenshot 2025-09-16 201642" src="https://github.com/user-attachments/assets/3c65c5f3-cd21-4264-8b79-254d08f35ba9" />
 
-D FLIP FLOP
+
+D FLIP FLOP :
+
 
 <img width="1919" height="1197" alt="Screenshot 2025-09-16 200937" src="https://github.com/user-attachments/assets/0fc996fc-5d4e-4a7f-a888-9e3e085e2c32" />
 
-SR FLIP FLOP
+
+SR FLIP FLOP :
+
 
 <img width="1891" height="1186" alt="Screenshot 2025-09-16 202057" src="https://github.com/user-attachments/assets/a977a45e-6df1-4e5b-a48c-1ac73984e122" />
 
-JK FLIP FLOP
+
+JK FLIP FLOP :
+
 
 <img width="1919" height="1199" alt="Screenshot 2025-09-16 202454" src="https://github.com/user-attachments/assets/1b810d54-ded4-4b33-87b3-d0e7377dff1a" />
+
 
 
 Conclusion:
