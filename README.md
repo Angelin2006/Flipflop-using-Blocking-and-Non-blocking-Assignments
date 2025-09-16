@@ -30,6 +30,19 @@ Close the Simulation Once done, by going to Simulation → "Close Simulation
 
 Input/Output Signal Diagram:
 
+D FLIP FLOP
+<img width="616" height="300" alt="Screenshot 2025-09-16 205440" src="https://github.com/user-attachments/assets/cc690886-4052-4c10-9a52-3ab80a1e7877" />
+
+SR FLIP FLOP
+<img width="600" height="355" alt="Screenshot 2025-09-16 205452" src="https://github.com/user-attachments/assets/518dcb64-31e3-4dbf-bf72-91e0a37e4339" />
+
+JK FLIP FLOP
+<img width="562" height="348" alt="Screenshot 2025-09-16 205502" src="https://github.com/user-attachments/assets/48f46606-aa99-40ee-b2d5-a976f67a751c" />
+
+T FLIP FLOP
+<img width="596" height="331" alt="Screenshot 2025-09-16 205523" src="https://github.com/user-attachments/assets/54858162-adb1-40a1-8d9b-14ffcca8dfc1" />
+
+
 RTL code :
 
 D FF
@@ -194,4 +207,4 @@ JK FLIP FLOP
 
 Conclusion:
 
-
+In this experiment, various flip-flops (JK, T, D, and SR) were successfully designed and simulated using Verilog HDL. Different modeling styles were applied to implement each flip-flop. The simulation results confirmed the correct functionality of all flip-flops, with each design accurately responding to the applied inputs and clock signals. The outputs matched the expected behavior for every type of flip-flop, thereby verifying the correctness of the Verilog implementations.
