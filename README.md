@@ -30,20 +30,167 @@ Close the Simulation Once done, by going to Simulation → "Close Simulation
 
 Input/Output Signal Diagram:
 
-D FF
+RTL code :
 
+D FF
+         
+    module dff ( clk, rst,d, q);
+    input clk,rst,d;
+    output reg q;
+    always @(posedge clk) begin
+    if (rst)
+    q <= 1'b0;
+    else
+    q <= d;
+    end
+    endmodule
+    
 SR FF
+
+    module sr_ff (input clk,input S,input R,output reg Q);
+    always @(posedge clk)
+    begin
+    case ({S,R})
+    2'b00: Q <= Q;
+    2'b01: Q <= 0;
+    2'b10: Q <= 1;
+    2'b11: Q <= 1'bx;
+    endcase
+    end
+    endmodule
 
 JK FF
 
+    module jk_ff(input clk,J,K, output reg Q);
+    always @(posedge clk) begin
+    case({J,K})
+    2'b00: Q<=Q;
+    2'b01: Q<=0; 
+    2'b10: Q<=1;
+    2'b11: Q<=~Q;
+    endcase
+    end
+    endmodule
+
 T FF
 
-
-RTL Code:
+    module t_ff(clk,rst,Tout,T);
+    input clk,rst,T;
+    output reg Tout;
+    always@ (posedge clk)
+    begin
+    if(rst)
+    Tout = 1'b0;
+    else if(T)
+    Tout = ~Tout;
+    else
+    Tout = Tout;
+    end 
+    endmodule
 
 TestBench:
 
+D Flip flop
+
+    module dff_tb;
+    reg clk_t, rst_t, d_t;
+    wire q_t;
+    dff dut (.clk(clk_t),.rst(rst_t),.d(d_t),.q(q_t) );
+    initial begin
+    clk_t = 1'b0;
+    rst_t = 1'b1;
+    d_t = 1'b0;
+    #100 rst_t = 1'b0;
+    #100 d_t = 1'b1;
+    #100 d_t = 1'b0;
+    #100 d_t = 1'b1;
+    end
+    always #10 clk_t = ~clk_t;
+    endmodule
+
+T flip flop
+
+    module t_ff_tb;
+    reg clk, rst, T;
+    wire Tout;
+    t_ff uut (.clk(clk),.rst(rst),.T(T),.Tout(Tout));
+    initial begin
+    clk = 0;
+    forever #10 clk = ~clk;
+    end
+    initial begin
+    rst = 1; T = 0;
+    #20 rst = 0;
+    #20 T = 1;
+    #20 T = 0;
+    #20 T = 1;
+    #20 T = 1;
+    #20 T = 0;
+    end
+    endmodule
+
+
+SR Flip Flop
+
+    module sr_ff_tb;
+    reg clk, S, R;
+    wire Q;
+    sr_ff uut (.clk(clk),.S(S),.R(R),.Q(Q));
+    initial begin
+    clk = 0;
+    forever #10 clk = ~clk;
+    end
+    initial begin
+    S = 0; R = 0;
+    #100 S = 1; R = 0;
+    #100 S = 0; R = 0;
+    #100 S = 0; R = 1;
+    #100 S = 1; R = 1;
+    #100 S = 0; R = 0;
+    end
+    endmodule
+
+JK Flip flop
+
+    module tb_jk_ff;
+    reg clk;
+    reg J, K;
+    wire Q;
+    jk_ff uut (.clk(clk),.J(J),.K(K),.Q(Q));
+    initial begin
+    clk=0;
+    forever #20 clk=~clk;
+    end
+    initial begin
+    J = 0; K = 0;
+    #100 J=0; K=0;
+    #100 J=0; K=1;
+    #100 J=1; K=0;
+    #100 J=1; K=1;
+    #100 J=0; K=1;
+    #100 J=1; K=0;
+    #100 J=1; K=1;
+    end
+    endmodule
+
 Output waveform:
+
+T FLIP FLOP
+
+<img width="1919" height="1199" alt="Screenshot 2025-09-16 201642" src="https://github.com/user-attachments/assets/3c65c5f3-cd21-4264-8b79-254d08f35ba9" />
+
+D FLIP FLOP
+
+<img width="1919" height="1197" alt="Screenshot 2025-09-16 200937" src="https://github.com/user-attachments/assets/0fc996fc-5d4e-4a7f-a888-9e3e085e2c32" />
+
+SR FLIP FLOP
+
+<img width="1891" height="1186" alt="Screenshot 2025-09-16 202057" src="https://github.com/user-attachments/assets/a977a45e-6df1-4e5b-a48c-1ac73984e122" />
+
+JK FLIP FLOP
+
+<img width="1919" height="1199" alt="Screenshot 2025-09-16 202454" src="https://github.com/user-attachments/assets/1b810d54-ded4-4b33-87b3-d0e7377dff1a" />
+
 
 Conclusion:
 
